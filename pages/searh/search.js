@@ -1,33 +1,32 @@
-document.getElementById('searchBtn').addEventListener('click', function () {
-    const query = document.getElementById('searchBox').value.toLowerCase();
-    const studioCards = document.querySelectorAll('.studio-card');
+const priceMinInput = document.getElementById("priceMinInput");
+const priceMaxInput = document.getElementById("priceMaxInput");
+const priceMinSlider = document.getElementById("priceMin");
+const priceMaxSlider = document.getElementById("priceMax");
+const priceRange = document.querySelector(".priceRange");
 
-    studioCards.forEach(card => {
-        const studioName = card.getAttribute('data-name').toLowerCase();
-        card.style.display = studioName.includes(query) ? 'block' : 'none';
-    });
+// Обновляет значение ползунка, когда вводят число
+priceMinInput.addEventListener("input", () => {
+    priceMinSlider.value = priceMinInput.value;
+    updatePriceRange();
 });
 
-document.getElementById('cityFilter').addEventListener('change', function () {
-    const selectedCity = this.value;
-    const studioCards = document.querySelectorAll('.studio-card');
-
-    studioCards.forEach(card => {
-        const studioCity = card.getAttribute('data-city');
-        card.style.display = selectedCity === "" || selectedCity === studioCity ? 'block' : 'none';
-    });
+priceMaxInput.addEventListener("input", () => {
+    priceMaxSlider.value = priceMaxInput.value;
+    updatePriceRange();
 });
 
-document.getElementById('priceFilter').addEventListener('input', function () {
-    const maxPrice = this.value;
-    const studioCards = document.querySelectorAll('.studio-card');
-
-    studioCards.forEach(card => {
-        const studioPrice = parseInt(card.getAttribute('data-price'), 10);
-        card.style.display = maxPrice === "" || studioPrice <= maxPrice ? 'block' : 'none';
-    });
-});
-
-function goToStudioPage(studioName) {
-    window.location.href = `${studioName}.html`;
+// Обновляет текст диапазона цен
+function updatePriceRange() {
+    priceRange.textContent = `${priceMinSlider.value} - ${priceMaxSlider.value} руб`;
 }
+
+// Обновляет поля ввода при изменении ползунков
+priceMinSlider.addEventListener("input", () => {
+    priceMinInput.value = priceMinSlider.value;
+    updatePriceRange();
+});
+
+priceMaxSlider.addEventListener("input", () => {
+    priceMaxInput.value = priceMaxSlider.value;
+    updatePriceRange();
+});

@@ -1,72 +1,117 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Поиск студий</title>
-    <link rel="stylesheet" href="search.css" />
-  </head>
-  <body>
-    <header>
-      <div class="search-container">
-        <input
-          type="text"
-          id="searchBox"
-          placeholder="Введите название студии..."
-        />
-        <button id="searchBtn">Поиск</button>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Поиск студий</title>
+  <link rel="stylesheet" href="search.css">
+</head>
+<body>
 
-    <aside>
+  <header>
+    <div class="search-container">
+      <input type="text" id="searchBox" placeholder="Введите название студии...">
+      <button id="searchBtn">
+        <img src="/images/seacrh/icons/searchicon.png" alt="Поиск">
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <button class="navBtn">
+      <img src="/images/seacrh/icons/searchicon.png" alt="Поиск"> Поиск
+    </button>
+    <button class="navBtn">
+      <img src="/images/seacrh/icons/ordersicon.png" alt="Заказы"> Заказы
+    </button>
+    <button class="navBtn">
+      <img src="/images/seacrh/icons/mystudioicon.png" alt="Моя студия"> Моя студия
+    </button>
+    <button class="navBtn">
+      <img src="/images/seacrh/icons/myprofileicon.png" alt="Профиль"> Мой профиль
+    </button>
+  </nav>
+
+  <aside>
+    <div class="filter-header">
       <h2>Фильтры</h2>
-     
-      <div class="filters">
-        <label for="cityFilter">Площадка</label>
-        <button class="ploschadka">Репточка</button>
-        <button class="ploschadka">Звукозапись</button>
-      </div>
+      <button class="clearBtn" onclick="clearFilters()">
+        <img src="/images/seacrh/icons/trashicon.png" alt="Очистить">
+      </button>
+    </div>
 
-      <label for="priceFilter">Цена до:</label>
-      <input
-        type="number"
-        id="priceFilter"
-        min="0"
-        placeholder="Цена в рублях"
-      />
-    </aside>
-
-    <main id="studioList">
-      <div
-        class="studio-card"
-        data-name="Overtone Studio"
-        data-city="Минск"
-        data-price="23"
-      >
-        <img src="/images/overtone.jpg" alt="Overtone Studio" />
-        <h3>Overtone Studio</h3>
-        <p>ул. Козлова, 2</p>
-        <p>от 23 руб/час</p>
-        <button class="detailsBtn" onclick="goToStudioPage('overtone')">
-          Подробнее
-        </button>
+    <section class="filter-block">
+      <label>Площадка</label>
+      <div class="button-group">
+        <button class="Buttons">Репточка</button>
+        <button class="Buttons">Звукозапись</button>
       </div>
-      <div
-        class="studio-card"
-        data-name="1000 Records"
-        data-city="Москва"
-        data-price="25"
-      >
-        <img src="1000records.jpg" alt="1000 Records" />
-        <h3>1000 Records</h3>
-        <p>ул. Институт Культуры</p>
-        <p>от 25 руб/час</p>
-        <button class="detailsBtn" onclick="goToStudioPage('1000records')">
-          Подробнее
-        </button>
-      </div>
-    </main>
+    </section>
 
-    <script src="search.js"></script>
-  </body>
+    <section class="filter-block">
+      <label>Сортировка</label>
+      <div class="button-group">
+        <button class="Buttons">Популярные</button>
+        <button class="Buttons">Ближайшие</button>
+        <button class="Buttons">По убыванию цены</button>
+        <button class="Buttons">По нарастанию цены</button>
+      </div>
+    </section>
+
+    <section class="filter-block">
+      <label>Услуги</label>
+      <div class="button-group">
+        <button class="Buttons">Репетиция</button>
+        <button class="Buttons">Звукозапись</button>
+        <button class="Buttons">Сведение</button>
+        <button class="Buttons">Мастеринг</button>
+        <button class="Buttons">Аранжировка</button>
+      </div>
+    </section>
+
+    <section class="price-filter">
+      <label>Цена от:</label>
+      <input type="range" id="priceMin" min="0" max="100" step="1" value="20">
+    </section>
+
+    <section class="price-filter">
+      <label>Цена до:</label>
+      <input type="range" id="priceMax" min="0" max="100" step="1" value="80">
+      <span class="priceRange">20 - 80 руб</span>
+    </section>
+  </aside>
+
+  <main id="studioList">
+    <div class="studio-card" onclick="goToStudioPage('overtone')">
+      <img src="/images/seacrh/cards/overtone/overtone.jpg" alt="Overtone Studio">
+      <h3>Overtone Studio</h3>
+      <p>ул. Козлова, 2</p>
+      <p>от 23 руб/час</p>
+    </div>
+
+    <div class="studio-card" onclick="goToStudioPage('1000records')">
+      <img src="/images/seacrh/cards/1000records/1000records.jpg" alt="1000 Records">
+      <h3>1000 Records</h3>
+      <p>ул. Институт Культуры</p>
+      <p>от 25 руб/час</p>
+    </div>
+
+    <div class="studio-card" onclick="goToStudioPage('yoyo')">
+      <img src="/images/seacrh/cards/yoyo/yoyo.jpg" alt="YOYO Studio">
+      <h3>YOYO Studio</h3>
+      <p>Октябрьская 16/20</p>
+      <p>Фото и видео съёмка</p>
+    </div>
+
+    <div class="studio-card" onclick="goToStudioPage('artkvartal')">
+      <img src="/images/seacrh/cards/artkvartal/artkvartal.jpg" alt="Арт-квартал">
+      <h3>Музыкальная студия Арт-квартал</h3>
+      <p>ул. Чапаева, 3</p>
+      <p>Музыкальные занятия</p>
+    </div>
+  </main>
+
+  <script src="search.js"></script>
+
+</body>
 </html>
