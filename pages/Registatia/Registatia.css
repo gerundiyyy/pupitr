@@ -1,0 +1,101 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f5f5f5;
+}
+.login-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 350px;
+  text-align: center;
+}
+.logo {
+  width: 325px;
+  height: 253px;
+  margin: 0 auto 20px;
+  background-image: url("/public/Registatia/Logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+.icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.lock-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+.input-field {
+  width: 100%;
+  padding: 12px 12px 12px 45px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+.input-field:focus {
+  outline: none;
+  border-color: #421094;
+}
+.forgot-password {
+  text-align: right;
+  margin-bottom: 25px;
+}
+.forgot-password a {
+  color: #421094;
+  text-decoration: none;
+  font-size: 13px;
+}
+.btn-login {
+  width: 100%;
+  padding: 14px;
+  background-color: #421094;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.btn-login:hover {
+  background-color: #7b1fa2;
+}
+.register-link {
+  color: #421094;
+  text-decoration: none;
+  font-size: 14px;
+}
+.register-link:hover {
+  text-decoration: underline;
+}

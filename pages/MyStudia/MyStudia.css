@@ -1,0 +1,331 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Кнопки навигации */
+.nav-buttons {
+  margin-top: 54px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.back-button,
+.favorite-button {
+  width: 24px;
+  height: 24px;
+  color: #421094;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 24px;
+  padding: 0;
+}
+
+/* Основные стили */
+.two-column-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.left-column,
+.right-column {
+  width: 48%;
+}
+
+/* Картинка студии */
+.studio-image {
+  width: 100%;
+  height: 402px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Общие стили для блоков */
+.section {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.input-line {
+  border-bottom: 1px solid #421094;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  min-height: 20px;
+  color: #999;
+}
+
+.input-line:focus {
+  color: #333;
+  outline: none;
+}
+
+.input-line-thick {
+  border-bottom: 2px solid #421094;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+  min-height: 20px;
+  color: #999;
+}
+
+.input-line-thick:focus {
+  color: #333;
+  outline: none;
+}
+
+/* Блок времени работы */
+.working-hours-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.working-days {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.day-button {
+  padding: 8px 12px;
+  background: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.day-button:hover {
+  background: #e0e0e0;
+}
+
+.time-inputs-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.time-input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-input {
+  border-bottom: 2px solid #421094;
+  width: 60px;
+  text-align: center;
+  margin-bottom: 5px;
+  color: #999;
+}
+
+.time-input:focus {
+  color: #333;
+  outline: none;
+}
+
+.time-separator {
+  color: #421094;
+  font-size: 20px;
+  align-self: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Блок цен */
+.price-row {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 20px;
+}
+
+.price-input {
+  border-bottom: 1px solid #421094;
+  width: 80px;
+  margin-right: 5px;
+  text-align: right;
+  min-height: 20px;
+  color: #999;
+}
+
+.price-input:focus {
+  color: #333;
+  outline: none;
+}
+
+.price-currency {
+  color: #421094;
+}
+
+/* Блок бронирования */
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.date-button {
+  color: #421094;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+/* Блок фотографий */
+.photos-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.main-photo {
+  width: 150px;
+  height: 150px;
+  border: 2px solid #421094;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #421094;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.photo-gallery {
+  display: flex;
+  gap: 5px;
+}
+
+.photo-item {
+  width: 150px;
+  height: 150px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+/* Блок карты */
+.map-container {
+  width: 100%;
+  height: 205px;
+  background-color: #f5f5f5;
+  position: relative;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.map-button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 16px;
+  background: white;
+  border: 2px solid #421094;
+  color: #421094;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Блок отзывов */
+.reviews-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 0 20px;
+}
+
+.review-column {
+  width: 30%;
+}
+
+.review {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.review-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  margin-right: 15px;
+}
+
+.review-content {
+  flex: 1;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.review-name {
+  font-weight: bold;
+}
+
+.review-date {
+  color: #666;
+  font-size: 12px;
+}
+
+.review-stars {
+  color: gold;
+  margin-bottom: 5px;
+}
+
+.review-text {
+  font-size: 14px;
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.view-all {
+  color: gray;
+  cursor: pointer;
+}
+
+/* Стили для placeholder */
+[contenteditable="true"]:empty:before {
+  content: attr(data-placeholder);
+  color: #999;
+}
+
+@media (max-width: 768px) {
+  .two-column-layout {
+    flex-direction: column;
+  }
+  .reviews-container {
+    flex-direction: column;
+  }
+  .review-column {
+    width: 100%;
+  }
+  .left-column,
+  .right-column{
+    width: 100%;
+  }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой профиль</title>
+  <link rel="stylesheet" href="search.css">
+  <link rel="stylesheet" href="myprofile.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="search-container">
+      <input type="text" id="searchBox" placeholder="Введите название студии...">
+      <button id="searchBtn">
+        <img src="/images/search/icons/searchicon.png" alt="Поиск">
+      </button>
+    </div>
+  </header>
+
+  <nav class="nav-container">
+    <a href="/pages/search/search.html" class="navBtn">
+      <img src="/images/search/icons/searchicon.png" alt="Поиск"> Поиск
+    </a>
+    <a href="/pages/orders/orders.html" class="navBtn">
+      <img src="/images/search/icons/ordersicon.png" alt="Заказы"> Заказы
+    </a>
+    <a href="/pages/mystudio/mystudio.html" class="navBtn">
+      <img src="/images/search/icons/mystudioicon.png" alt="Моя студия"> Моя студия
+    </a>
+    <a href="/pages/myprofile/myprofile.html" class="navBtn ">
+      <img src="/images/search/icons/myprofileicon.png" alt="Профиль"> Мой профиль
+    </a>
+  </nav>
+
+  <!-- Боковое меню профиля -->
+  <div id="profileSidebar" class="sidebar open">
+    <div class="sidebar-content">
+      <span class="close">&times;</span>
+      <div class="profile-header">
+        <div class="avatar-container">
+          <div class="profile-avatar"></div>
+          <div class="avatar-buttons">
+            <button class="avatar-button">
+              <div class="button-icon settings-icon"></div>
+            </button>
+            <button class="avatar-button">
+              <div class="button-icon edit-icon"></div>
+            </button>
+          </div>
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">Владимир Ульянов</div>
+          <div class="profile-contact">+375 29 338-83-51</div>
+          <div class="profile-contact">vladien17@gmail.com</div>
+        </div>
+      </div>
+
+      <div class="menu">
+        <div class="menu-item">
+          <div class="icon favorite-icon"></div>
+          Избранное
+        </div>
+        <div class="menu-item">
+          <div class="icon reviews-icon"></div>
+          Мои отзывы
+        </div>
+        <div class="menu-item">
+          <div class="icon cards-icon"></div>
+          Платежные карты
+        </div>
+        <div class="menu-item">
+          <div class="icon help-icon"></div>
+          Помощь
+        </div>
+        <button class="logout-item">
+          <div class="icon logout-icon"></div>
+          Выйти из профиля
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="myprofile.js"></script>
+</body>
+</html>

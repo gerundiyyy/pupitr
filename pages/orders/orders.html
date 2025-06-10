@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заказы - Пюпитр</title>
+  <link rel="stylesheet" href="/pages/orders/orders.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Шапка -->
+    <header class="app-header">
+      <div class="logo">
+        <img src="/images/logo.svg" alt="Пюпитр">
+        <span>Пюпитр</span>
+      </div>
+      <nav class="main-nav">
+        <a href="/pages/searсh/searh.html" class="navBtn">
+          <i class="fas fa-search"></i> Поиск
+        </a>
+        <a href="/pages/orders/orders.html" class="navBtn active">
+          <i class="fas fa-calendar-alt"></i> Заказы
+        </a>
+        <a href="/pages/MyStudia/MyStudia.html" class="navBtn">
+          <i class="fas fa-home"></i> Моя студия
+        </a>
+        <a href="/pages/myprofile/myprofile.html" class="navBtn">
+          <i class="fas fa-user"></i> Мой профиль
+        </a>
+      </nav>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="app-main">
+      <!-- Боковая панель фильтров -->
+      <aside class="filters-sidebar">
+        <div class="filters-header">
+          <h2>Фильтры</h2>
+          <button class="clear-filters">Сбросить</button>
+        </div>
+
+        <div class="filter-section">
+          <h3>Статус заказа</h3>
+          <div class="filter-options">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="planned" checked> Планируемые
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="completed" checked> Завершенные
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="status" value="cancelled"> Отмененные
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Сортировка</h3>
+          <select class="sort-select">
+            <option value="date-desc">По дате (новые)</option>
+            <option value="date-asc">По дате (старые)</option>
+            <option value="price-desc">По цене (дороже)</option>
+            <option value="price-asc">По цене (дешевле)</option>
+          </select>
+        </div>
+
+        <div class="filter-section">
+          <h3>Тип услуги</h3>
+          <div class="filter-options services">
+            <label class="filter-checkbox">
+              <input type="checkbox" name="service" value="rehearsal" checked> Репетиция
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="service" value="recording" checked> Запись
+            </label>
+            <label class="filter-checkbox">
+              <input type="checkbox" name="service" value="mixing"> Сведение
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Дата</h3>
+          <div class="date-range">
+            <input type="text" class="date-input" placeholder="Выберите дату" id="datePicker">
+          </div>
+        </div>
+      </aside>
+
+      <section class="orders-list">
+        <div class="search-bar">
+          <input type="text" placeholder="Поиск заказов..." id="searchInput">
+          <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+
+    
+
+      
+            
+            <section class="studios-list">
+       
+
+        <div class="studio-cards">
+          <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Загрузка студий...</p>
+          </div>
+
+          <div class="order-actions">
+              <button class="action-btn call-btn">
+                <i class="fas fa-phone"></i> Позвонить
+              </button>
+              <button class="action-btn review-btn">
+                <i class="fas fa-star"></i> Отзыв
+              </button>
+ <button class="action-btn cancel-btn">
+                <i class="fas fa-times"></i> Отменить
+              </button>
+            </div>
+
+        </div>
+
+        <div class="pagination">
+          <button class="page-btn active">1</button>
+        </div>
+      </section>
+
+    <!-- Нижняя навигация (для мобильных) -->
+    <nav class="bottom-nav">
+      <a href="/pages/search/search.html"><i class="fas fa-search"></i></a>
+      <a href="/pages/orders/orders.html" class="active"><i class="fas fa-calendar-alt"></i></a>
+      <a href="/pages/mystudio/mystudio.html"><i class="fas fa-home"></i></a>
+      <a href="/pages/myprofile/myprofile.html"><i class="fas fa-user"></i></a>
+    </nav>
+  </div>
+
+  <!-- Подключаем скрипты -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+  <script src="/pages/orders/orders.js"></script>
+</body>
+</html>

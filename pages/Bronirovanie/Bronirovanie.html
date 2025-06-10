@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="stylesheet" href="./Bronirovanie.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бронирование</title>
+</head>
+<body>
+    <div class="header">
+        <div class="back-arrow">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15 18L9 12L15 6" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="header-title">Бронирование</div>
+    </div>
+    
+    <div class="studio-container">
+        <div class="studio-image"></div>
+        <div class="studio-info">
+            <div class="studio-name">Black Line Studio</div>
+            <div class="studio-type">Репетиционная база</div>
+        </div>
+    </div>
+    
+    <div class="booking-form">
+        <div class="left-column">
+            <div class="form-section">
+                <div class="section-title">Вид работ</div>
+                <select class="dropdown">
+                    <option>Репетиция</option>
+                    <option>Кастинг</option>
+                    <option>Фотосессия</option>
+                    <option>Запись</option>
+                </select>
+                
+                <div class="section-title">Количество человек</div>
+                <select class="dropdown">
+                    <option>2-4 человека</option>
+                    <option>5-8 человек</option>
+                    <option>9-12 человек</option>
+                    <option>12+ человек</option>
+                </select>
+            </div>
+            
+            <div class="form-section">
+                <div class="section-title">Выбор зала</div>
+                <div class="room-options">
+                    <div class="room-option">
+                        <div class="room-image"></div>
+                        <div class="room-details">
+                            <div class="room-name">Комната S</div>
+                            <div class="room-size">30 м²</div>
+                        </div>
+                    </div>
+                    <div class="room-option selected">
+                        <div class="room-image"></div>
+                        <div class="room-details">
+                            <div class="room-name">Комната M</div>
+                            <div class="room-size">36 м²</div>
+                        </div>
+                    </div>
+                    <div class="room-option">
+                        <div class="room-image"></div>
+                        <div class="room-details">
+                            <div class="room-name">Комната L</div>
+                            <div class="room-size">56 м²</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="summary-box">
+                <div class="booking-details">
+                    <div>Репетиция, 2-4 человека</div>
+                    <div>Комната M (36 м²)</div>
+                </div>
+                <div class="booking-time">Суббота, 25 сентября 16:00—18:00</div>
+                <div class="booking-price">7000 ₽</div>
+                <button class="continue-btn">Продолжить</button>
+            </div>
+        </div>
+        
+        <div class="right-column">
+            <div class="calendar-container">
+                <div class="month-nav">
+                    <button class="month-btn">Июнь</button>
+                    <button class="month-btn">Июль</button>
+                    <button class="month-btn active">Август</button>
+                    <button class="month-btn">Сентябрь</button>
+                </div>
+                
+                <div class="time-nav">
+                    <button class="time-btn">Утро</button>
+                    <button class="time-btn active">День</button>
+                    <button class="time-btn">Вечер</button>
+                    <button class="time-btn">Ночь</button>
+                </div>
+                
+                <div class="week-days">
+                    <button class="day-btn">
+                        <div>Пн</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                    <button class="day-btn">
+                        <div>Вт</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                    <button class="day-btn">
+                        <div>Ср</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                    <button class="day-btn">
+                        <div>Чт</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                    <button class="day-btn">
+                        <div>Пт</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                    <button class="day-btn weekend">
+                        <div>Сб</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                    <button class="day-btn weekend">
+                        <div>Вс</div>
+                        <div class="day-name">Июнь</div>
+                    </button>
+                </div>
+                
+                <div class="room-feature">
+                    <div class="feature-icon"></div>
+                    <div class="feature-name">Большой зал</div>
+                    <div class="feature-rating">★ 5.0 (101)</div>
+                </div>
+                <div class="feature-price">4000.00 ₽ / 2 часа</div>
+                
+                <div class="time-slots">
+                    <button class="time-slot">11:00</button>
+                    <button class="time-slot">12:00</button>
+                    <button class="time-slot">13:00</button>
+                    <button class="time-slot">14:00</button>
+                    <button class="time-slot active">16:00</button>
+                    <button class="time-slot">17:00</button>
+                    <button class="time-slot">21:00</button>
+                    <button class="time-slot">22:00</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Обработка выбора комнаты
+        document.querySelectorAll('.room-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.room-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                
+                // Обновляем выбранную комнату в сводке
+                const roomName = this.querySelector('.room-name').textContent;
+                const roomSize = this.querySelector('.room-size').textContent;
+                document.querySelector('.booking-details').children[1].textContent = 
+                    `${roomName} (${roomSize})`;
+            });
+        });
+        
+        // Обработка выбора времени
+        document.querySelectorAll('.time-slot').forEach(slot => {
+            slot.addEventListener('click', function() {
+                document.querySelectorAll('.time-slot').forEach(s => {
+                    s.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Здесь можно обновить время в сводке
+            });
+        });
+    </script>
+</body>
+</html>

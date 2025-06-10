@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Данные из базы Pupitre</title>
+  <style>
+    table { 
+      border-collapse: collapse; 
+      width: 100%; 
+      margin-bottom: 30px;
+    }
+    th, td { 
+      border: 1px solid #ddd; 
+      padding: 8px; 
+      text-align: left; 
+    }
+    th { 
+      background-color: #f2f2f2; 
+      position: sticky;
+      top: 0;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .table-container {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 40px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Данные из базы Pupitre</h1>
+    
+    <h2>Пользователи</h2>
+    <div class="table-container">
+      <table id="usersTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Email</th>
+            <th>Телефон</th>
+            <th>Роль</th>
+            <th>Дата создания</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2>Студии</h2>
+    <div class="table-container">
+      <table id="studiosTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Тип</th>
+            <th>Цена</th>
+            <th>Район</th>
+            <th>Рейтинг</th>
+            <th>Владелец</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2>Изображения студий</h2>
+    <div class="table-container">
+      <table id="studioImagesTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID студии</th>
+            <th>URL изображения</th>
+            <th>Основное</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2>Избранное</h2>
+    <div class="table-container">
+      <table id="favoritesTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID пользователя</th>
+            <th>ID студии</th>
+            <th>Дата добавления</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2>Бронирования</h2>
+    <div class="table-container">
+      <table id="bookingsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID студии</th>
+            <th>ID пользователя</th>
+            <th>Начало</th>
+            <th>Конец</th>
+            <th>Статус</th>
+            <th>Цена</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <h2>Отзывы</h2>
+    <div class="table-container">
+      <table id="reviewsTable">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>ID студии</th>
+            <th>ID пользователя</th>
+            <th>Рейтинг</th>
+            <th>Комментарий</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <script>
+      // Функция для форматирования даты
+      function formatDate(dateString) {
+        if (!dateString) return '';
+        const date = new Date(dateString);
+        return date.toLocaleString();
+      }
+
+      // Загрузка пользователей
+      fetch('http://localhost:3000/api/users')
+        .then(response => response.json())
+        .then(users => {
+          const tableBody = document.querySelector('#usersTable tbody');
+          tableBody.innerHTML = '';
+          
+          users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${user.user_id}</td>
+              <td>${user.user_name}</td>
+              <td>${user.user_email}</td>
+              <td>${user.user_phone || '-'}</td>
+              <td>${user.user_role}</td>
+              <td>${formatDate(user.user_created_at)}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Ошибка загрузки пользователей:', error));
+
+      // Загрузка студий
+      fetch('http://localhost:3000/api/studios')
+        .then(response => response.json())
+        .then(studios => {
+          const tableBody = document.querySelector('#studiosTable tbody');
+          tableBody.innerHTML = '';
+          
+          studios.forEach(studio => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${studio.studio_id}</td>
+              <td>${studio.studio_name}</td>
+              <td>${studio.studio_type === 'recording' ? 'Запись' : 'Репетиция'}</td>
+              <td>${studio.studio_price} BYN</td>
+              <td>${getDistrictName(studio.studio_district)}</td>
+              <td>${studio.studio_rating}</td>
+              <td>${studio.studio_owner_id}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Ошибка загрузки студий:', error));
+
+      // Загрузка изображений студий
+      fetch('http://localhost:3000/api/studio_images')
+        .then(response => response.json())
+        .then(images => {
+          const tableBody = document.querySelector('#studioImagesTable tbody');
+          tableBody.innerHTML = '';
+          
+          images.forEach(image => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${image.image_id}</td>
+              <td>${image.image_studio_id}</td>
+              <td><a href="${image.image_url}" target="_blank">Просмотр</a></td>
+              <td>${image.is_primary_image ? 'Да' : 'Нет'}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Ошибка загрузки изображений:', error));
+
+      // Загрузка избранного
+      fetch('http://localhost:3000/api/favorites')
+        .then(response => response.json())
+        .then(favorites => {
+          const tableBody = document.querySelector('#favoritesTable tbody');
+          tableBody.innerHTML = '';
+          
+          favorites.forEach(favorite => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${favorite.favorite_id}</td>
+              <td>${favorite.favorite_user_id}</td>
+              <td>${favorite.favorite_studio_id}</td>
+              <td>${formatDate(favorite.favorite_created_at)}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Ошибка загрузки избранного:', error));
+
+      // Загрузка бронирований
+      fetch('http://localhost:3000/api/bookings')
+        .then(response => response.json())
+        .then(bookings => {
+          const tableBody = document.querySelector('#bookingsTable tbody');
+          tableBody.innerHTML = '';
+          
+          bookings.forEach(booking => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${booking.booking_id}</td>
+              <td>${booking.booking_studio_id}</td>
+              <td>${booking.booking_user_id}</td>
+              <td>${formatDate(booking.booking_start_time)}</td>
+              <td>${formatDate(booking.booking_end_time)}</td>
+              <td>${getBookingStatus(booking.booking_status)}</td>
+              <td>${booking.booking_total_price} BYN</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Ошибка загрузки бронирований:', error));
+
+      // Загрузка отзывов
+      fetch('http://localhost:3000/api/reviews')
+        .then(response => response.json())
+        .then(reviews => {
+          const tableBody = document.querySelector('#reviewsTable tbody');
+          tableBody.innerHTML = '';
+          
+          reviews.forEach(review => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${review.review_id}</td>
+              <td>${review.review_studio_id}</td>
+              <td>${review.review_user_id}</td>
+              <td>${'★'.repeat(review.review_rating)} (${review.review_rating}/5)</td>
+              <td>${review.review_comment || '-'}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Ошибка загрузки отзывов:', error));
+
+      // Вспомогательные функции для преобразования значений
+      function getDistrictName(district) {
+        const districts = {
+          'center': 'Центральный',
+          'soviet': 'Советский',
+          'october': 'Октябрьский',
+          'lenin': 'Ленинский'
+        };
+        return districts[district] || district;
+      }
+
+      function getBookingStatus(status) {
+        const statuses = {
+          'pending': 'Ожидание',
+          'confirmed': 'Подтверждено',
+          'cancelled': 'Отменено',
+          'completed': 'Завершено'
+        };
+        return statuses[status] || status;
+      }
+    </script>
+  </div>
+</body>
+</html>
